@@ -22,9 +22,6 @@ min_balance = 100000 #https://developer.algorand.org/docs/features/accounts/#min
 account_private_key = 'BdzejpYMYzToTLMAPKajRYnLmxW+uDe+L6Gu7cUc1h3QsRxgnfx77NgbalH3/mvLuyoeZNu3f1WAs948BTV2+g=='
 account_address = '2CYRYYE57R56ZWA3NJI7P7TLZO5SUHTE3O3X6VMAWPPDYBJVO35BE6G6NM'
 
-print(account_private_key)
-
-
 def send_tokens( receiver_pk, tx_amount ):
     params = acl.suggested_params()
     gen_hash = params.gh
@@ -33,7 +30,7 @@ def send_tokens( receiver_pk, tx_amount ):
     last_valid_round = params.last
 
     #Your code here
-    tx = transaction.PaymentTxn(account_address, fee, first_valid_round, 
+    tx = transaction.PaymentTxn(account_address, tx_fee, first_valid_round, 
         last_valid_round, gen_hash, receiver_pk, tx_amount, flat_fee=True)
     signed_tx = tx.sign(account_private_key)
     tx_confirm = acl.send_transaction(signed_tx)
