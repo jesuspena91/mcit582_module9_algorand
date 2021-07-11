@@ -36,7 +36,7 @@ def send_tokens( receiver_pk, tx_amount ):
     tx_confirm = acl.send_transaction(signed_tx)
     wait_for_confirmation(acl, txid=signed_tx.transaction.get_txid())
 
-    return receiver_pk, signed_tx.transaction.get_txid()
+    return account_address, signed_tx.transaction.get_txid()
 
 # Function from Algorand Inc.
 def wait_for_confirmation(client, txid):
